@@ -1,4 +1,16 @@
-# Coworking Space Booking System
+# stages:
+  - build
+  - test
+  - deploy
+
+deploy_to_azure:
+  stage: deploy
+  script:
+    - az login --service-principal -u $AZURE_APP_ID -p $AZURE_PASSWORD --tenant $AZURE_TENANT_ID
+    - az group create --name $AZURE_RESOURCE_GROUP --location $AZURE_LOCATION
+    - az deployment group create --resource-group $AZURE_RESOURCE_GROUP --template-file azure-deploy.jsonAZURE_SUBSCRIPTION_ID=your-subscription-id
+AZURE_RESOURCE_GROUP=your-resource-group
+AZURE_LOCATION=westeuropeCoworking Space Booking System
 
 ## Application Structure
 
@@ -49,7 +61,7 @@ docker-compose up -d
 
 # Deployment Options
 
-## GitLab CI/CD
+## GitLab CI/CD Deployment
 1. Ensure you have `.gitlab-ci.yml` in your project root
 2. Push your code to GitLab repository
 3. Configure CI/CD variables in GitLab:
