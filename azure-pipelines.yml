@@ -1,0 +1,15 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo "Building the application"
+  displayName: 'Build'
+
+- script: echo "Running tests"
+  displayName: 'Test'
+
+- script: echo "Deploying to Azure"
+  displayName: 'Deploy'

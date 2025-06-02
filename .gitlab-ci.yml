@@ -1,0 +1,27 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  DOCKER_IMAGE: registry.gitlab.com/your-username/your-project
+
+build:
+  stage: build
+  script:
+    - echo "Building the application"
+    # Добавьте команды сборки
+
+test:
+  stage: test
+  script:
+    - echo "Running tests"
+    # Добавьте команды тестирования
+
+deploy_to_azure:
+  stage: deploy
+  script:
+    - echo "Deploying to Azure"
+    # Добавьте команды развертывания на Azure
+  only:
+    - main
